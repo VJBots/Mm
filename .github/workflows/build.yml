@@ -1,4 +1,4 @@
-name: Build EXE
+name: Build EXE with Debug
 
 on:
   workflow_dispatch:
@@ -21,6 +21,12 @@ jobs:
 
     - name: Build EXE
       run: pyinstaller --onefile quotex_signal_generator.py
+
+    - name: List files in repo root
+      run: dir
+
+    - name: List files in dist folder
+      run: dir dist
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
