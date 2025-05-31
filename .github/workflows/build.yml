@@ -23,10 +23,10 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile quotex_signal_bot.py
+          pyinstaller --onefile --name QuotexSignalBot quotex_signal_generator.py
 
       - name: Upload EXE
         uses: actions/upload-artifact@v3
         with:
           name: quotex-signal-bot
-          path: dist/quotex_signal_bot.exe
+          path: dist/QuotexSignalBot.exe
