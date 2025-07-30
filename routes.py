@@ -61,14 +61,14 @@ def get_signal_history():
         }), 500
 
 @app.route('/api/signals/generate', methods=['POST'])
-async def generate_signal():
+def generate_signal():
     """Generate a new trading signal"""
     try:
         data = request.get_json()
         asset = data.get('asset', 'EUR/USD')
         
         # Generate signal using the Quotex signal generator
-        signal_data = await signal_gen.generate_quotex_signal(asset)
+        signal_data = signal_gen.generate_quotex_signal(asset)
         
         if signal_data:
             # Create new signal in database
