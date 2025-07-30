@@ -116,15 +116,24 @@ class QuotexSignalGenerator:
         """Apply OTC-specific price modifications"""
         if data is None or len(data) == 0:
             return data
-        
-        # Add slight price variations (0.05-0.15%) for OTC
-        variation = np.random.uniform(0.9995, 1.0005, len(data))
-        
+
+        variation = np.random.uniform(0.9995, 1.0005, size=data.shape[0])
+    
+        # Vectorized operation to apply variations to specified columns
         for col in ['Open', 'High', 'Low', 'Close']:
             if col in data.columns:
-                data[col] = data[col] * variation
-        
+                data[col] *= variation  # This applies the variation directly
+    
         return data
+        
+        # Add slight price variations (0.05-0.15%) for OTC
+        #variation = np.random.uniform(0.9995, 1.0005, len(data))
+        
+        #for col in ['Open', 'High', 'Low', 'Close']:
+         #   if col in data.columns:
+         #       data[col] = data[col] * variation
+        
+       # return data
     
     def calculate_advanced_indicators(self, df):
         """Calculate comprehensive technical indicators"""
