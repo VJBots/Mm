@@ -34,7 +34,7 @@ def check_dependencies():
     """Check if all required dependencies are installed"""
     required_packages = [
         'flask', 'flask_sqlalchemy', 'flask_cors', 'yfinance', 
-        'pandas', 'numpy', 'requests', 'beautifulsoup4'
+        'pandas', 'numpy', 'requests'
     ]
     
     missing_packages = []
@@ -86,10 +86,10 @@ def main():
     setup_environment()
     
     # Check dependencies
-    if not check_dependencies():
-        print("\n❌ Dependency check failed. Please install required packages.")
-        input("Press Enter to exit...")
-        return 1
+    #if not check_dependencies():
+      #  print("\n❌ Dependency check failed. Please install required packages.")
+    #    input("Press Enter to exit...")
+     #   return 1
     
     try:
         # Import after dependency check
